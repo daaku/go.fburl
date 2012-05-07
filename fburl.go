@@ -1,4 +1,4 @@
-// This package provides a convenient way to generate facebook.com
+// Package fburl provides a convenient way to generate facebook.com
 // URLs. It allows for generating URLs for various subdomains, and is
 // also aware of "environments" which allows switching between
 // production and development environments.
