@@ -30,9 +30,10 @@ const (
 	DWww        = "www"
 )
 
-var (
-	defaultEnv = flag.String("fburl.env", Production,
-		"Facebook environment to generate URLs for.")
+var defaultEnv = flag.String(
+	"fburl.env",
+	Production,
+	"Facebook environment to generate URLs for.",
 )
 
 // Used to construct facebook.com URLs.
