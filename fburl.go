@@ -9,7 +9,6 @@
 package fburl
 
 import (
-	"flag"
 	"net/url"
 	"strings"
 )
@@ -28,12 +27,6 @@ const (
 	DGraph      = "graph"
 	DMobile     = "m"
 	DWww        = "www"
-)
-
-var defaultEnv = flag.String(
-	"fburl.env",
-	Production,
-	"Facebook environment to generate URLs for.",
 )
 
 // Used to construct facebook.com URLs.
@@ -55,11 +48,6 @@ func defaultString(choices ...string) string {
 	return ""
 }
 
-// Returns the default Facebook environment.
-func DefaultEnv() string {
-	return *defaultEnv
-}
-
 // Make a hostname for the given subdomain and environment.
 func Hostname(subDomain string, env string) string {
 	if !strings.HasPrefix(env, DWww) {
@@ -70,7 +58,7 @@ func Hostname(subDomain string, env string) string {
 
 // Generate a url.URL object for the Facebook URL.
 func (u *URL) URL() *url.URL {
-	env := defaultString(u.Env, DefaultEnv())
+	env := defaultString(u.Env, Production)
 	subDomain := u.SubDomain
 	if subDomain == "our" && env == Production {
 		subDomain = "our.intern"
